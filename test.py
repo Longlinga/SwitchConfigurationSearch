@@ -16,8 +16,7 @@ def DataSeach(file_str):
               r'undo telnet ipv6 server-source all-interface',
               r'acl \d{4} inbound',
               r'snmp-agent group v3.* acl \d{4}',
-              r'authentication-mode password',
-              r'authentication-mode aaa'
+              r'authentication-mode password'
               ]
 
     with open(file_str, 'r', encoding='UTF-8') as f:
