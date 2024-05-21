@@ -2,6 +2,7 @@ import os
 import re
 import openpyxl
 
+
 def DataSeach(file_str):
     # 匹配规则
     ruler = [r'user-interface vty 0',
@@ -42,21 +43,21 @@ def DataSeach(file_str):
         f.close()
 
         # 打开文件
-        with open(file_str, 'r', encoding='UTF-8') as file:
-            content = file.read()
-            for ruler1 in ruler1:
-                found_match = False
-                ruler_pattern = re.compile(ruler1)
-                if re.search(ruler1, content):
-                    found_match = True
-                    # 获取匹配值
-                    match = re.search(ruler1, content).group()
-                    data.append(match)
-                if not found_match:
-                    data.append('N/A')
-            file.close()
+    with open(file_str, 'r', encoding='UTF-8') as file:
+        content = file.read()
+        for ruler1 in ruler1:
+            found_match = False
+            ruler_pattern = re.compile(ruler1)
+            if re.search(ruler1, content):
+                found_match = True
+                # 获取匹配值
+                match = re.search(ruler1, content).group()
+                data.append(match)
+            if not found_match:
+                data.append('N/A')
+        file.close()
 
-    print(file_str+'搜索完毕')
+    print(file_str + '搜索完毕')
     # 将data写入excel
     if os.path.exists('output.xlsx'):
         # 如果文件已存在，加载已有的Excel文件
