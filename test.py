@@ -30,10 +30,13 @@ def DataSeach(file_str):
             for i, line in enumerate(content):
                 if ruler_pattern.search(line):
                     found_match = True
-                    # 打印匹配值下5行
-                    seach = ''.join(content[i:i + 5])
-                    # seach存入data
-                    data.append(seach)
+                    # 获取匹配值直至匹配值为'#'
+                    search = ''
+                    for j in range(i, len(content)):
+                        if content[j] == '#':
+                            break
+                        search += content[j] + '\n'
+                    data.append(search)
             if not found_match:
                 data.append('N/A')
         f.close()
@@ -75,5 +78,5 @@ if __name__ == '__main__':
     File_path = input('请输入文件路径：')
     FileName = os.listdir(File_path)
     for FileName in FileName:
-        file_str = File_path+'/' + FileName
+        file_str = File_path + '/' + FileName
         DataSeach(file_str)
